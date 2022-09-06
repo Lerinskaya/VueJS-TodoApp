@@ -6,28 +6,33 @@
       </header>
       <div class="todoField">
         <div class="todoTask">
-          <span>
-            <input type="checkbox" />
-            Task 1
-          </span>
+          <label>
+            <input type="checkbox" class="checkbox" />
+            <span class="fake__checkbox"></span>
+            <span>Task 1</span>
+          </label>
           <button>&times;</button>
         </div>
         <div class="todoTask">
-          <span>
-            <input type="checkbox" />
-            Task 2
-          </span>
+          <label>
+            <input type="checkbox" class="checkbox" />
+            <span class="fake__checkbox"></span>
+            <span>Task 2</span>
+          </label>
           <button>&times;</button>
         </div>
         <div class="todoTask">
-          <span>
-            <input type="checkbox" />
-            Task 3
-          </span>
+          <label>
+            <input type="checkbox" class="checkbox" />
+            <span class="fake__checkbox"></span>
+            <span>Task 3</span>
+          </label>
           <button>&times;</button>
         </div>
         <div class="addTask">
-          <span>Add a new task</span>
+          <label>
+            <input type="text" placeholder="Add new task" />
+          </label>
         </div>
       </div>
       <footer class="todoState">
@@ -60,6 +65,7 @@ $darkPeach: #ffdfbe;
 $peach: #ffecd8;
 $lightBrown: rgba(127, 75, 19, 0.42);
 $brownBorder: #c9955d;
+$orange: #fc8f1a;
 * {
   margin: 0 auto;
   box-sizing: border-box;
@@ -95,17 +101,29 @@ $brownBorder: #c9955d;
         max-width: 30rem;
         margin-bottom: 1.56rem;
         display: flex;
-        margin-top: 0;
         color: $brown;
         font-weight: 400;
         font-size: 1.25rem;
         padding: 0.688rem 0;
+        margin-top: 0;
         border-radius: 0.625rem;
-        span {
+        label {
           margin-left: 1.25rem;
+          text-align: center;
           input {
+            position: absolute;
+            z-index: -1;
+            opacity: 0;
             color: $lightOrange;
             background-color: $darkPeach;
+          }
+          .fake__checkbox {
+            display: inline-flex;
+            width: 24px;
+            height: 24px;
+            border: 1.5px solid #feb567;
+            border-radius: 5px;
+            margin-right: 1.4rem;
           }
         }
         button {
@@ -114,6 +132,12 @@ $brownBorder: #c9955d;
           border-radius: 2px;
           color: $lightOrange;
           background-color: $darkPeach;
+          max-height: 1.5rem;
+        }
+        button:hover {
+          border: 1.5px solid $orange;
+          color: $orange;
+          cursor: pointer;
         }
       }
       .addTask {
@@ -125,8 +149,15 @@ $brownBorder: #c9955d;
         background-color: $peach;
         border: 2px dashed $lightOrange;
         max-width: 30rem;
-        font-weight: 400;
-        font-size: 1.25rem;
+        input {
+          font-weight: 400;
+          font-size: 1.25rem;
+          color: $lightOrange;
+          background-color: $peach;
+          border: none;
+          display: flex;
+          text-align: center;
+        }
       }
     }
     .todoState {
@@ -145,9 +176,14 @@ $brownBorder: #c9955d;
         border-radius: 0.625rem;
         padding: 0.3rem;
         margin-right: 1.56rem;
+        cursor: pointer;
       }
       .todoLeft {
         margin-right: 0;
+        cursor: pointer;
+      }
+      p {
+        cursor: pointer;
       }
     }
   }
@@ -155,18 +191,144 @@ $brownBorder: #c9955d;
 .todoTask:first-child {
   margin-top: 1.875rem;
 }
-.todoApp::before {
-  width: 10rem;
-  height: 10rem;
-  background-image: "url(~@/assets/note.png)";
-  margin-right: 1rem;
-}
 .todoImage {
   display: flex;
   flex-direction: row;
   position: absolute;
   margin-left: 33.5rem;
-  margin-top: 0.8rem;
+  margin-top: -0.3rem;
+}
+.fake__checkbox::before {
+  content: "";
+  width: 24px;
+  height: 24px;
+  background-image: url("@/assets/checked.png");
+  margin-top: -1.5px;
+  border-radius: 5px;
+  margin-right: -1.8px;
+  opacity: 0;
+  cursor: pointer;
+}
+.checkbox:checked + .fake__checkbox::before {
+  opacity: 1;
+}
+@media (max-width: 980px) {
+  .todoImage {
+    img {
+      margin-left: -6.5rem;
+      margin-top: -6rem;
+      max-width: 22rem;
+    }
+  }
+  .todoList {
+    .todoApp {
+      max-width: 29rem;
+      .todoTitle {
+        padding: 0.688rem 9.1rem;
+        font-size: 1.2rem;
+      }
+      .todoTask {
+        max-width: 8rem;
+        margin: 0 1rem;
+      }
+      .todoState {
+        font-size: 1rem;
+        padding: 0.3rem 1.875rem;
+        span {
+          margin-left: 2rem;
+          padding: 0.3rem;
+          margin-right: 0.5rem;
+        }
+        p {
+          margin-right: 0.5rem;
+        }
+        .todoLeft {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 850px) {
+  .todoImage {
+    img {
+      margin-left: -13rem;
+      margin-top: -10rem;
+      max-width: 25rem;
+    }
+  }
+  .todoList {
+    .todoApp {
+      max-width: 28rem;
+      .todoTitle {
+        padding: 0.688rem 7rem;
+      }
+      .todoTask {
+        font-size: 1rem;
+      }
+      .addTask {
+        margin: 0 1rem;
+        input {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 710px) {
+  .todoImage {
+    img {
+      margin-left: -15rem;
+      margin-top: -13rem;
+      max-width: 19rem;
+    }
+  }
+}
+@media (max-width: 650px) {
+  .todoImage {
+    img {
+      margin-left: -18rem;
+      margin-top: -15rem;
+      max-width: 19rem;
+    }
+  }
+}
+@media (max-width: 600px) {
+  .todoImage {
+    img {
+      display: none;
+    }
+  }
+  .todoList {
+    .todoApp {
+      max-width: 24rem;
+      .todoTitle {
+        padding: 0.688rem 5rem;
+      }
+      .todoTask {
+        font-size: 0.8rem;
+      }
+      .addTask {
+        input {
+          max-width: 10rem;
+          font-size: 0.9rem;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 450px) {
+  .todoList {
+    .todoApp {
+      max-width: 17rem;
+    }
+    .todoState {
+      font-size: 0.8rem;
+      span {
+        margin-left: 0.5rem;
+      }
+    }
+  }
 }
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Open+Sans:wght@400;600&display=swap");
 </style>
