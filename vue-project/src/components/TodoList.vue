@@ -1,11 +1,11 @@
 <template>
-  <section class="todoList">
-    <div class="todoApp">
-      <header class="todoTitle">
+  <section class="todo__list">
+    <div class="todo__app">
+      <header class="todo__title">
         <p>to do list</p>
       </header>
-      <div class="todoField">
-        <div class="todoTask">
+      <div class="todo__field">
+        <div class="todo__task">
           <label>
             <input type="checkbox" class="checkbox" />
             <span class="fake__checkbox"></span>
@@ -13,7 +13,7 @@
           </label>
           <button>&times;</button>
         </div>
-        <div class="todoTask">
+        <div class="todo__task">
           <label>
             <input type="checkbox" class="checkbox" />
             <span class="fake__checkbox"></span>
@@ -21,7 +21,7 @@
           </label>
           <button>&times;</button>
         </div>
-        <div class="todoTask">
+        <div class="todo__task">
           <label>
             <input type="checkbox" class="checkbox" />
             <span class="fake__checkbox"></span>
@@ -29,20 +29,20 @@
           </label>
           <button>&times;</button>
         </div>
-        <div class="addTask">
+        <div class="add__task">
           <label>
             <input type="text" placeholder="Add new task" />
           </label>
         </div>
       </div>
-      <footer class="todoState">
-        <p class="todoLeft">1/3 left</p>
+      <footer class="todo__state">
+        <p class="todo__left">1/3 left</p>
         <span>All</span>
         <p>Active</p>
-        <p class="todoCompleted">Completed</p>
+        <p class="todo__completed">Completed</p>
       </footer>
     </div>
-    <div class="todoImage">
+    <div class="todo__image">
       <img src="@/assets/note.png" />
     </div>
   </section>
@@ -50,7 +50,7 @@
 
 <script>
 export default {
-  name: "HelloWorld",
+  name: "todoList",
   props: {
     msg: String,
   },
@@ -66,24 +66,30 @@ $peach: #ffecd8;
 $lightBrown: rgba(127, 75, 19, 0.42);
 $brownBorder: #c9955d;
 $orange: #fc8f1a;
+$backgroundOrange: #ff7e5f;
+$backgroundGradient: #feb567;
 * {
   margin: 0 auto;
   box-sizing: border-box;
 }
-.todoList {
-  background: linear-gradient(104.11deg, #ff7e5f 14.52%, #feb567 87.26%);
+.todo__list {
+  background: linear-gradient(
+    104.11deg,
+    $backgroundOrange 14.52%,
+    $backgroundGradient 87.26%
+  );
   height: 100vh;
   margin-top: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  .todoApp {
+  .todo__app {
     flex-direction: column;
     margin-top: 0;
     max-width: 33.75rem;
     border: 2px solid $lightOrange;
     z-index: 1;
-    .todoTitle {
+    .todo__title {
       font-family: "Open Sans";
       background-color: $lightOrange;
       color: $brown;
@@ -91,11 +97,11 @@ $orange: #fc8f1a;
       font-weight: 600;
       font-size: 1.25rem;
     }
-    .todoField {
+    .todo__field {
       background-color: $lightPeach;
       padding-top: 1.875rem;
       padding-bottom: 1.875rem;
-      .todoTask {
+      .todo__task {
         font-family: "Inter";
         background-color: $darkPeach;
         max-width: 30rem;
@@ -119,8 +125,8 @@ $orange: #fc8f1a;
           }
           .fake__checkbox {
             display: inline-flex;
-            width: 24px;
-            height: 24px;
+            width: 1.5rem;
+            height: 1.5rem;
             border: 1.5px solid #feb567;
             border-radius: 5px;
             margin-right: 1.4rem;
@@ -140,7 +146,7 @@ $orange: #fc8f1a;
           cursor: pointer;
         }
       }
-      .addTask {
+      .add__task {
         font-family: "Inter";
         padding: 0.688rem 0;
         border-radius: 0.625rem;
@@ -160,7 +166,7 @@ $orange: #fc8f1a;
         }
       }
     }
-    .todoState {
+    .todo__state {
       font-family: "Open Sans";
       background-color: $lightOrange;
       display: flex;
@@ -178,7 +184,7 @@ $orange: #fc8f1a;
         margin-right: 1.56rem;
         cursor: pointer;
       }
-      .todoLeft {
+      .todo__left {
         margin-right: 0;
         cursor: pointer;
       }
@@ -188,10 +194,10 @@ $orange: #fc8f1a;
     }
   }
 }
-.todoTask:first-child {
+.todo__task:first-child {
   margin-top: 1.875rem;
 }
-.todoImage {
+.todo__image {
   display: flex;
   flex-direction: row;
   position: absolute;
@@ -204,7 +210,7 @@ $orange: #fc8f1a;
   height: 24px;
   background-image: url("@/assets/checked.png");
   margin-top: -1.5px;
-  border-radius: 5px;
+  border-radius: 0.31rem;
   margin-right: -1.8px;
   opacity: 0;
   cursor: pointer;
@@ -213,25 +219,25 @@ $orange: #fc8f1a;
   opacity: 1;
 }
 @media (max-width: 980px) {
-  .todoImage {
+  .todo__image {
     img {
       margin-left: -6.5rem;
       margin-top: -6rem;
       max-width: 22rem;
     }
   }
-  .todoList {
-    .todoApp {
+  .todo__list {
+    .todo__app {
       max-width: 29rem;
-      .todoTitle {
+      .todo__title {
         padding: 0.688rem 9.1rem;
         font-size: 1.2rem;
       }
-      .todoTask {
+      .todo__task {
         max-width: 8rem;
         margin: 0 1rem;
       }
-      .todoState {
+      .todo__state {
         font-size: 1rem;
         padding: 0.3rem 1.875rem;
         span {
@@ -242,7 +248,7 @@ $orange: #fc8f1a;
         p {
           margin-right: 0.5rem;
         }
-        .todoLeft {
+        .todo__left {
           margin-right: 0;
         }
       }
@@ -250,23 +256,23 @@ $orange: #fc8f1a;
   }
 }
 @media (max-width: 850px) {
-  .todoImage {
+  .todo__image {
     img {
       margin-left: -13rem;
       margin-top: -10rem;
       max-width: 25rem;
     }
   }
-  .todoList {
-    .todoApp {
+  .todo__list {
+    .todo__app {
       max-width: 28rem;
-      .todoTitle {
+      .todo__title {
         padding: 0.688rem 7rem;
       }
-      .todoTask {
+      .todo__task {
         font-size: 1rem;
       }
-      .addTask {
+      .add__task {
         margin: 0 1rem;
         input {
           font-size: 1rem;
@@ -276,7 +282,7 @@ $orange: #fc8f1a;
   }
 }
 @media (max-width: 710px) {
-  .todoImage {
+  .todo__image {
     img {
       margin-left: -15rem;
       margin-top: -13rem;
@@ -285,7 +291,7 @@ $orange: #fc8f1a;
   }
 }
 @media (max-width: 650px) {
-  .todoImage {
+  .todo__image {
     img {
       margin-left: -18rem;
       margin-top: -15rem;
@@ -294,21 +300,21 @@ $orange: #fc8f1a;
   }
 }
 @media (max-width: 600px) {
-  .todoImage {
+  .todo__image {
     img {
       display: none;
     }
   }
-  .todoList {
-    .todoApp {
+  .todo__list {
+    .todo__app {
       max-width: 24rem;
-      .todoTitle {
+      .todo__title {
         padding: 0.688rem 5rem;
       }
-      .todoTask {
+      .todo__task {
         font-size: 0.8rem;
       }
-      .addTask {
+      .add__task {
         input {
           max-width: 10rem;
           font-size: 0.9rem;
@@ -318,11 +324,11 @@ $orange: #fc8f1a;
   }
 }
 @media (max-width: 450px) {
-  .todoList {
-    .todoApp {
+  .todo__list {
+    .todo__app {
       max-width: 17rem;
     }
-    .todoState {
+    .todo__state {
       font-size: 0.8rem;
       span {
         margin-left: 0.5rem;
