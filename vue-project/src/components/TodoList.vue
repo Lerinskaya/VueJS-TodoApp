@@ -1,14 +1,12 @@
 <template>
   <section class="todo__list">
     <div class="todo__app">
-      <header class="todo__title">
-        <p>to do list</p>
-      </header>
+      <h1 class="todo__title">to do list</h1>
       <div class="todo__field">
         <div class="todo__task">
           <label>
             <input type="checkbox" class="checkbox" />
-            <span class="fake__checkbox"></span>
+            <span class="fake__checkbox" />
             <span>Task 1</span>
           </label>
           <button>&times;</button>
@@ -16,7 +14,7 @@
         <div class="todo__task">
           <label>
             <input type="checkbox" class="checkbox" />
-            <span class="fake__checkbox"></span>
+            <span class="fake__checkbox" />
             <span>Task 2</span>
           </label>
           <button>&times;</button>
@@ -24,7 +22,7 @@
         <div class="todo__task">
           <label>
             <input type="checkbox" class="checkbox" />
-            <span class="fake__checkbox"></span>
+            <span class="fake__checkbox" />
             <span>Task 3</span>
           </label>
           <button>&times;</button>
@@ -50,28 +48,15 @@
 
 <script>
 export default {
-  name: "todoList",
+  name: "TodoList",
   props: {
     msg: String,
   },
 };
 </script>
 
-<style scoped lang="scss">
-$lightOrange: #ffca93;
-$lightPeach: #fff4e9;
-$brown: #7f4b13;
-$darkPeach: #ffdfbe;
-$peach: #ffecd8;
-$lightBrown: rgba(127, 75, 19, 0.42);
-$brownBorder: #c9955d;
-$orange: #fc8f1a;
-$backgroundOrange: #ff7e5f;
-$backgroundGradient: #feb567;
-* {
-  margin: 0 auto;
-  box-sizing: border-box;
-}
+<style lang="scss">
+@import "../styles/main.scss";
 .todo__list {
   background: linear-gradient(
     104.11deg,
@@ -127,7 +112,7 @@ $backgroundGradient: #feb567;
             display: inline-flex;
             width: 1.5rem;
             height: 1.5rem;
-            border: 1.5px solid #feb567;
+            border: 1.5px solid $backgroundGradient;
             border-radius: 5px;
             margin-right: 1.4rem;
           }
@@ -336,5 +321,4 @@ $backgroundGradient: #feb567;
     }
   }
 }
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Open+Sans:wght@400;600&display=swap");
 </style>
