@@ -1,0 +1,49 @@
+<template>
+  <div :class="$style.add__task">
+    <input type="text" placeholder="Add new task" />
+  </div>
+</template>
+
+<script>
+export default {
+  name: "App",
+};
+</script>
+
+<style lang="scss" module>
+@import "@/styles/main.scss";
+.add__task {
+  font-family: "Inter";
+  padding: 0.688rem 0;
+  border-radius: 0.625rem;
+  display: flex;
+  color: $lightOrange;
+  background-color: $peach;
+  border: 2px dashed $lightOrange;
+  max-width: 30rem;
+  input {
+    font-weight: 400;
+    font-size: 1.25rem;
+    color: $lightOrange;
+    background-color: $peach;
+    border: none;
+    display: flex;
+    text-align: center;
+  }
+}
+@media (max-width: 980px) {
+  .add__task {
+    max-width: 28rem;
+    margin: 1rem;
+  }
+}
+@media (max-width: 450px) {
+  input {
+    max-width: 10rem;
+    font-size: 1rem;
+  }
+  .add__task {
+    margin-bottom: 0;
+  }
+}
+</style>
