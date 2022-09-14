@@ -5,7 +5,8 @@
 </template>
 
 <script>
-import TodoList from "@/components/TodoList";
+import TodoList from "./components/TodoList";
+
 export default {
   name: "App",
   components: {
@@ -23,5 +24,4 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
-@import "./styles/main.scss";
 </style>

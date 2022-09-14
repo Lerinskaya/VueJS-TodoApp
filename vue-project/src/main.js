@@ -2,7 +2,7 @@ import Vue from "vue";
 import App from "./App.vue";
 import "./registerServiceWorker";
 import store from "./store";
-// import TodoList from "./components/TodoList.vue";
+import "./styles/main.scss";
 
 Vue.config.productionTip = false;
 
