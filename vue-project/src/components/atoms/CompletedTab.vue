@@ -17,7 +17,6 @@ export default {
 </script>
 
 <style lang="scss" module>
-@import "@/styles/main.scss";
 .todo__completed {
   cursor: pointer;
 }

@@ -1,6 +1,7 @@
 <template>
   <div :class="$style.todo__task">
     <CheckBox :isChecked="isChecked" />
+    <span :class="$style.task">{{ title }}</span>
     <DeleteBtn />
   </div>
 </template>
@@ -10,9 +11,7 @@ import CheckBox from "@/components/atoms/CheckBox";
 import DeleteBtn from "@/components/atoms/DeleteBtn";
 export default {
   props: {
-    todo: {
-      type: Object,
-    },
+    title: String,
     isChecked: {
       type: Boolean,
       default: false,
@@ -26,7 +25,6 @@ export default {
 </script>
 
 <style lang="scss" module>
-@import "@/styles/main.scss";
 .todo__task {
   font-family: "Inter";
   background-color: $darkPeach;
@@ -39,6 +37,9 @@ export default {
   padding: 0.688rem 0;
   margin-top: 0;
   border-radius: 0.625rem;
+  .task {
+    margin-left: -8rem;
+  }
 }
 .todo__task:first-child {
   margin-top: 1.875rem;

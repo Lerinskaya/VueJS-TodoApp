@@ -23,7 +23,6 @@ export default {
 </script>
 
 <style lang="scss" module>
-@import "@/styles/main.scss";
 .todo__state {
   font-family: "Open Sans";
   background-color: $lightOrange;

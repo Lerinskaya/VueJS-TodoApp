@@ -3,12 +3,12 @@ const path = require("path");
 
 module.exports = defineConfig({
   transpileDependencies: true,
-
-  pluginOptions: {
-    "style-resources-loader": {
-      preProcessor: "sass",
-      patterns: [path.resolve(__dirname, "@/src/styles/main.scss")],
-    },
-  },
+  css: {
+    loaderOptions: {
+      sass: {
+        additionalData: `@import "@/styles/main.scss";`
+      }
+    }
+  }
 });
 

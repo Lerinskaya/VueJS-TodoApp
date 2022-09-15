@@ -17,7 +17,6 @@ export default {
 </script>
 
 <style lang="scss" module>
-@import "@/styles/main.scss";
 .btn__all {
   margin-left: 8rem;
   border: 1px solid $brownBorder;

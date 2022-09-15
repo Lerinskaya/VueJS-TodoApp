@@ -1,6 +1,11 @@
 <template>
   <div :class="$style.todo__field">
-    <TaskValue v-for="todo in todos" :key="todo.id" :title="todo.title" />
+    <TaskValue
+      v-for="todo in todos"
+      :key="todo.id"
+      :title="todo.title"
+      :isChecked="todo.completed"
+    />
     <InputBtn />
   </div>
 </template>
@@ -26,7 +31,6 @@ export default {
 </script>
 
 <style lang="scss" module>
-@import "@/styles/main.scss";
 .todo__field {
   background-color: $lightPeach;
   padding-top: 1.875rem;

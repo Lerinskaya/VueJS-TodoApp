@@ -7,7 +7,6 @@ export default {};
 </script>
 
 <style lang="scss" module>
-@import "@/styles/main.scss";
 .todo__title {
   font-family: "Open Sans";
   background-color: $lightOrange;

@@ -11,7 +11,6 @@ export default {
 </script>
 
 <style lang="scss" module>
-@import "@/styles/main.scss";
 .add__task {
   font-family: "Inter";
   padding: 0.688rem 0;

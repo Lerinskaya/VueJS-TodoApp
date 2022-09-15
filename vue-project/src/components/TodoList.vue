@@ -35,7 +35,6 @@ export default {
 </script>
 
 <style lang="scss" module>
-@import "@/styles/main.scss";
 .todo__list {
   background: linear-gradient(
     104.11deg,
