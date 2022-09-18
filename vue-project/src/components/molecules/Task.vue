@@ -1,14 +1,14 @@
 <template>
-  <div :class="$style.todo__task">
-    <CheckBox :isChecked="isChecked" />
+  <div :class="$style.todo">
+    <Checkbox :isChecked="isChecked" />
     <span :class="$style.task">{{ title }}</span>
-    <DeleteBtn />
+    <DeleteButton />
   </div>
 </template>
 
 <script>
-import CheckBox from "@/components/atoms/CheckBox";
-import DeleteBtn from "@/components/atoms/DeleteBtn";
+import Checkbox from "@/components/atoms/Checkbox";
+import DeleteButton from "@/components/atoms/DeleteButton";
 export default {
   props: {
     title: String,
@@ -18,14 +18,14 @@ export default {
     },
   },
   components: {
-    CheckBox,
-    DeleteBtn,
+    Checkbox,
+    DeleteButton,
   },
 };
 </script>
 
 <style lang="scss" module>
-.todo__task {
+.todo {
   font-family: "Inter";
   background-color: $darkPeach;
   max-width: 30rem;
@@ -41,14 +41,14 @@ export default {
     margin-left: -8rem;
   }
 }
-.todo__task:first-child {
+.todo:first-child {
   margin-top: 1.875rem;
 }
 @media (max-width: 600px) {
-  .todo__task {
+  .todo {
     font-size: 0.8rem;
   }
-  .add__task {
+  .task {
     input {
       max-width: 10rem;
       font-size: 0.9rem;
@@ -56,10 +56,10 @@ export default {
   }
 }
 @media (max-width: 850px) {
-  .todo__task {
+  .todo {
     font-size: 1rem;
   }
-  .add__task {
+  .task {
     margin: 0 1rem;
     input {
       font-size: 1rem;
@@ -67,7 +67,7 @@ export default {
   }
 }
 @media (max-width: 980px) {
-  .todo__task {
+  .todo {
     max-width: 28rem;
     margin: 1rem;
   }

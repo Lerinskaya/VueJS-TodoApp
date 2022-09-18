@@ -1,18 +1,18 @@
 <template>
-  <div :class="$style.todo__field">
-    <TaskValue
+  <div :class="$style.taskArea">
+    <Task
       v-for="todo in todos"
       :key="todo.id"
       :title="todo.title"
       :isChecked="todo.completed"
     />
-    <InputBtn />
+    <AddTask />
   </div>
 </template>
 
 <script>
-import TaskValue from "@/components/molecules/TaskValue";
-import InputBtn from "@/components/atoms/InputBtn";
+import Task from "@/components/molecules/Task";
+import AddTask from "@/components/atoms/AddTask";
 export default {
   data() {
     return {
@@ -24,20 +24,20 @@ export default {
     };
   },
   components: {
-    TaskValue,
-    InputBtn,
+    Task,
+    AddTask,
   },
 };
 </script>
 
 <style lang="scss" module>
-.todo__field {
+.taskArea {
   background-color: $lightPeach;
   padding-top: 1.875rem;
   padding-bottom: 1.875rem;
 }
 @media (max-width: 800px) {
-  .todo__field {
+  .taskArea {
     padding-top: 1rem;
   }
 }

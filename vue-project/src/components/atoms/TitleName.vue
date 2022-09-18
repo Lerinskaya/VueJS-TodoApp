@@ -1,5 +1,5 @@
 <template>
-  <h1 :class="$style.todo__title">to do list</h1>
+  <h1 :class="$style.title">to do list</h1>
 </template>
 
 <script>
@@ -7,7 +7,7 @@ export default {};
 </script>
 
 <style lang="scss" module>
-.todo__title {
+.title {
   font-family: "Open Sans";
   background-color: $lightOrange;
   color: $brown;
@@ -16,23 +16,23 @@ export default {};
   font-size: 1.25rem;
 }
 @media (max-width: 600px) {
-  .todo__title {
+  .title {
     padding: 0.688rem 5rem;
   }
 }
 @media (max-width: 850px) {
-  .todo__title {
+  .title {
     padding: 0.688rem 7rem;
   }
 }
 @media (max-width: 980px) {
-  .todo__title {
+  .title {
     padding: 0.688rem 9.1rem;
     font-size: 1.2rem;
   }
 }
 @media (max-width: 450px) {
-  .todo__title {
+  .title {
     padding: 0.688rem 2rem;
   }
 }

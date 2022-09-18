@@ -1,5 +1,5 @@
 <template>
-  <div :class="$style.add__task">
+  <div :class="$style.add">
     <input type="text" placeholder="Add new task" />
   </div>
 </template>
@@ -11,7 +11,7 @@ export default {
 </script>
 
 <style lang="scss" module>
-.add__task {
+.add {
   font-family: "Inter";
   padding: 0.688rem 0;
   border-radius: 0.625rem;
@@ -31,7 +31,7 @@ export default {
   }
 }
 @media (max-width: 980px) {
-  .add__task {
+  .add {
     max-width: 28rem;
     margin: 1rem;
   }
@@ -41,7 +41,7 @@ export default {
     max-width: 10rem;
     font-size: 1rem;
   }
-  .add__task {
+  .add {
     margin-bottom: 0;
   }
 }
