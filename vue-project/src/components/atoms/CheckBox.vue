@@ -1,29 +1,22 @@
 <template>
   <label>
-    <input type="checkbox" :class="$style.checkbox" />
-    <span :class="$style.fake__checkbox" />
-    <span :class="$style.task">{{ title }}</span>
+    <input type="checkbox" :class="$style.checkbox" :checked="isChecked" />
+    <span :class="$style.fake" />
   </label>
 </template>
 
 <script>
 export default {
   props: {
-    todo: {
-      type: Object,
-    },
+    isChecked: Boolean,
   },
 };
 </script>
 
 <style lang="scss" module>
-@import "@/styles/main.scss";
 label {
   margin-left: 1.25rem;
   text-align: center;
-  .task {
-    display: inline-block;
-  }
   input {
     position: absolute;
     z-index: -1;
@@ -31,7 +24,7 @@ label {
     color: $lightOrange;
     background-color: $darkPeach;
   }
-  .fake__checkbox {
+  .fake {
     display: inline-flex;
     width: 1.5rem;
     height: 1.5rem;
@@ -40,7 +33,7 @@ label {
     margin-right: 1.4rem;
   }
 }
-.fake__checkbox::before {
+.fake::before {
   content: "";
   width: 24px;
   height: 24px;
@@ -52,7 +45,7 @@ label {
   opacity: 0;
   cursor: pointer;
 }
-.checkbox:checked + .fake__checkbox::before {
+.checkbox:checked + .fake::before {
   opacity: 1;
 }
 </style>

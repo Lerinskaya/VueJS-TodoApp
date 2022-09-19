@@ -10,7 +10,6 @@ export default {
 </script>
 
 <style lang="scss" module>
-@import "@/styles/main.scss";
 button {
   margin-right: 1.25rem;
   border: 1.5px solid $lightOrange;

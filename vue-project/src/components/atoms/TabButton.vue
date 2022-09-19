@@ -1,6 +1,6 @@
 <template>
   <div>
-    <span :class="$style.btn__all">All</span>
+    <p :class="$style.tab">{{ title }}</p>
   </div>
 </template>
 
@@ -17,24 +17,18 @@ export default {
 </script>
 
 <style lang="scss" module>
-@import "@/styles/main.scss";
-.btn__all {
+.tab {
+  cursor: pointer;
+}
+.tab:nth-last-child(3) {
   margin-left: 8rem;
   border: 1px solid $brownBorder;
   border-radius: 0.625rem;
   padding: 0.3rem;
   margin-right: 1.56rem;
-  cursor: pointer;
-}
-@media (max-width: 450px) {
-  .btn__all {
-    margin-left: 0.5rem;
-  }
 }
 @media (max-width: 980px) {
-  .btn__all {
-    margin-left: 2rem;
-    padding: 0.3rem;
+  p {
     margin-right: 0.5rem;
   }
 }
