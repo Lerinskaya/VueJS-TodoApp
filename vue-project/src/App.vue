@@ -1,15 +1,13 @@
 <template>
-  <div id="app">
-    <section :class="$style.list">
-      <div :class="$style.app">
-        <Title />
-        <TaskArea v-bind:todos="todos" />
-        <Footer />
-      </div>
-      <div :class="$style.todoImage">
-        <img src="@/assets/note.png" />
-      </div>
-    </section>
+  <div id="app" :class="$style.list">
+    <div :class="$style.app">
+      <Title />
+      <TaskArea :todos="todos" />
+      <Footer />
+    </div>
+    <div :class="$style.todoImage">
+      <img src="@/assets/note.png" />
+    </div>
   </div>
 </template>
 

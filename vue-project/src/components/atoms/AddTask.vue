@@ -20,6 +20,13 @@ export default {
   background-color: $peach;
   border: 2px dashed $lightOrange;
   max-width: 30rem;
+  @media (max-width: 980px) {
+    max-width: 30rem;
+    margin: 1rem;
+  }
+  @media (max-width: 450px) {
+    margin-bottom: 0;
+  }
   input {
     font-weight: 400;
     font-size: 1.25rem;
@@ -28,21 +35,10 @@ export default {
     border: none;
     display: flex;
     text-align: center;
-  }
-}
-@media (max-width: 980px) {
-  .add {
-    max-width: 28rem;
-    margin: 1rem;
-  }
-}
-@media (max-width: 450px) {
-  input {
-    max-width: 10rem;
-    font-size: 1rem;
-  }
-  .add {
-    margin-bottom: 0;
+    @media (max-width: 450px) {
+      max-width: 10rem;
+      font-size: 1rem;
+    }
   }
 }
 </style>

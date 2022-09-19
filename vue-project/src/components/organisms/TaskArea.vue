@@ -35,9 +35,7 @@ export default {
   background-color: $lightPeach;
   padding-top: 1.875rem;
   padding-bottom: 1.875rem;
-}
-@media (max-width: 800px) {
-  .taskArea {
+  @media (max-width: 800px) {
     padding-top: 1rem;
   }
 }
