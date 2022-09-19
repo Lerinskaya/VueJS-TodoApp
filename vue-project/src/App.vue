@@ -61,77 +61,49 @@ export default {
     max-width: 33.75rem;
     border: 2px solid $lightOrange;
     z-index: 1;
-  }
-  .todoImage {
-    display: flex;
-    flex-direction: row;
-    position: absolute;
-    margin-left: 33.5rem;
-    margin-top: -2.5rem;
+    @media (max-width: 980px) {
+      width: 33rem;
+    }
+    @media (max-width: 850px) {
+      max-width: 28rem;
+    }
+    @media (max-width: 600px) {
+      max-width: 24rem;
+    }
+    @media (max-width: 450px) {
+      max-width: 17rem;
+    }
   }
 }
-@media (max-width: 980px) {
-  .todoImage {
-    img {
+.todoImage {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  margin-left: 33.5rem;
+  margin-top: -2.5rem;
+  img {
+    @media (max-width: 980px) {
       margin-left: -6.5rem;
       margin-top: -6rem;
       max-width: 22rem;
     }
-  }
-  .list {
-    .app {
-      width: 33rem;
-    }
-  }
-}
-@media (max-width: 850px) {
-  .todoImage {
-    img {
+    @media (max-width: 850px) {
       margin-left: -13rem;
       margin-top: -10rem;
       max-width: 25rem;
     }
-  }
-  .list {
-    .app {
-      max-width: 28rem;
-    }
-  }
-}
-@media (max-width: 710px) {
-  .todoImage {
-    img {
+    @media (max-width: 710px) {
       margin-left: -15rem;
       margin-top: -13rem;
       max-width: 19rem;
     }
-  }
-}
-@media (max-width: 650px) {
-  .todoImage {
-    img {
+    @media (max-width: 650px) {
       margin-left: -18rem;
       margin-top: -15rem;
       max-width: 19rem;
     }
-  }
-}
-@media (max-width: 600px) {
-  .todoImage {
-    img {
+    @media (max-width: 600px) {
       display: none;
-    }
-  }
-  .list {
-    .app {
-      max-width: 24rem;
-    }
-  }
-}
-@media (max-width: 450px) {
-  .list {
-    .app {
-      max-width: 17rem;
     }
   }
 }
