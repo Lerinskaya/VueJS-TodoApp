@@ -1,12 +1,38 @@
 <template>
   <div :class="$style.add">
-    <input type="text" placeholder="Add new task" />
+    <input
+      type="text"
+      placeholder="Add new task"
+      @keyup.enter="addTodoI"
+      @change="todoTextChange"
+      v-bind:value="todoText"
+    />
   </div>
 </template>
 
 <script>
+import { mapActions } from "vuex";
+import { v1 } from "uuid";
+
 export default {
-  name: "App",
+  data() {
+    return {
+      todoText: "",
+    };
+  },
+  methods: {
+    ...mapActions(["addTodo"]),
+    todoTextChange(e) {
+      this.todoText = e.target.value;
+    },
+    addTodoI() {
+      this.addTodo({
+        id: v1(),
+        title: this.todoText,
+      });
+      this.todoText = "";
+    },
+  },
 };
 </script>
 

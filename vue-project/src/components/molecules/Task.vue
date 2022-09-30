@@ -2,15 +2,17 @@
   <div :class="$style.todo">
     <Checkbox :isChecked="isChecked" />
     <span :class="$style.task">{{ title }}</span>
-    <DeleteButton />
+    <DeleteButton @click="$emit('delete')" />
   </div>
 </template>
 
 <script>
 import Checkbox from "@/components/atoms/Checkbox";
 import DeleteButton from "@/components/atoms/DeleteButton";
+import { mapActions } from "vuex";
 export default {
   props: {
+    todo: {},
     title: String,
     isChecked: {
       type: Boolean,
@@ -20,6 +22,13 @@ export default {
   components: {
     Checkbox,
     DeleteButton,
+  },
+  methods: {
+    ...mapActions(["deleteTodo"]),
+    //   removeTodo(id) {
+    //     this.$store.dispatch("deleteTodo", id);
+    //   },
+    // },
   },
 };
 </script>

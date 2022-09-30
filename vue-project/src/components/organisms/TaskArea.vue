@@ -1,27 +1,27 @@
 <template>
   <div :class="$style.taskArea">
     <Task
-      v-for="todo in todos"
+      v-for="todo in allTodos"
       :key="todo.id"
       :title="todo.title"
-      :isChecked="todo.completed"
+      :isChecked="isChecked"
+      @click="deleteTodo(todo.id)"
+      @change="changeTaskStatus(todo.id)"
     />
     <AddTask />
   </div>
 </template>
 
 <script>
+import { mapGetters, mapMutations } from "vuex";
 import Task from "@/components/molecules/Task";
 import AddTask from "@/components/atoms/AddTask";
 export default {
-  data() {
-    return {
-      todos: [
-        { id: 1, title: "Task 1", completed: false },
-        { id: 2, title: "Task 2", completed: false },
-        { id: 3, title: "Task 3", completed: false },
-      ],
-    };
+  methods: {
+    ...mapMutations(["deleteTodo"], ["changeTaskStatus"]),
+  },
+  computed: {
+    ...mapGetters(["allTodos"]),
   },
   components: {
     Task,

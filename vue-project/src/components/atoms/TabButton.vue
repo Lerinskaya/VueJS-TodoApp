@@ -1,6 +1,8 @@
 <template>
   <div>
-    <p :class="$style.tab">{{ title }}</p>
+    <button :class="[$style.tab, { [$style.active]: isActive }]">
+      {{ title }}
+    </button>
   </div>
 </template>
 
@@ -18,14 +20,28 @@ export default {
 
 <style lang="scss" module>
 .tab {
+  font-family: "Open Sans";
+  background: #ffca93;
+  font-weight: 600;
+  font-size: 20px;
+  color: rgba(127, 75, 19, 0.42);
+  border: none;
   cursor: pointer;
 }
-.tab:nth-last-child(3) {
-  margin-left: 8rem;
+.tab:active {
+  color: rgba(224, 158, 87, 0.42);
+}
+// .tab:nth-last-child(3) {
+//   margin-left: 8rem;
+//   border: 1px solid $brownBorder;
+//   border-radius: 0.625rem;
+//   padding: 0.3rem;
+// }
+button {
+  margin-right: 0;
+}
+.active {
   border: 1px solid $brownBorder;
-  border-radius: 0.625rem;
-  padding: 0.3rem;
-  margin-right: 1.56rem;
 }
 @media (max-width: 980px) {
   p {

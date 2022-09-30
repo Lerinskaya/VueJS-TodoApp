@@ -1,26 +1,26 @@
 <template>
   <footer :class="$style.footer">
     <TaskCounter />
-    <TabButton v-for="tab in tabs" :key="tab.id" :title="tab.title" />
+    <TabButton
+      v-for="tab in tabButtons"
+      :key="tab.id"
+      :title="tab.title"
+      :isActive="tab.isActive"
+    />
   </footer>
 </template>
 
 <script>
 import TabButton from "@/components/atoms/TabButton";
 import TaskCounter from "@/components/atoms/TaskCounter";
+import { mapGetters } from "vuex";
 export default {
-  data() {
-    return {
-      tabs: [
-        { id: 1, title: "All" },
-        { id: 2, title: "Active" },
-        { id: 3, title: "Completed" },
-      ],
-    };
-  },
   components: {
     TabButton,
     TaskCounter,
+  },
+  computed: {
+    ...mapGetters(["tabButtons"]),
   },
 };
 </script>

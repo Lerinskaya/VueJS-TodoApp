@@ -1,10 +1,15 @@
 <template>
-  <p :class="$style.todoLeft">1/3 left</p>
+  <p :class="$style.todoLeft">
+    {{ getActiveTasks.length }}/{{ allTodos.length }} left
+  </p>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
-  components: {},
+  computed: {
+    ...mapGetters(["allTodos", "getActiveTasks"]),
+  },
 };
 </script>
 
