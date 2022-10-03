@@ -1,12 +1,9 @@
 <template>
-  <button :class="$style.delete">&times;</button>
+  <button :class="$style.delete" @click="$emit('click')">&times;</button>
 </template>
 
 <script>
-export default {
-  name: "App",
-  components: {},
-};
+export default {};
 </script>
 
 <style lang="scss" module>

@@ -12,7 +12,7 @@
 
 <script>
 import { mapActions } from "vuex";
-import { v1 } from "uuid";
+import { v4 } from "uuid";
 
 export default {
   data() {
@@ -27,8 +27,9 @@ export default {
     },
     addTodoI() {
       this.addTodo({
-        id: v1(),
+        id: v4(),
         title: this.todoText,
+        isChecked: false,
       });
       this.todoText = "";
     },

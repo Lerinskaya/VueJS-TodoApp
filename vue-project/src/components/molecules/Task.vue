@@ -1,6 +1,6 @@
 <template>
   <div :class="$style.todo">
-    <Checkbox :isChecked="isChecked" />
+    <Checkbox @click="$emit('change')" :isChecked="isChecked" />
     <span :class="$style.task">{{ title }}</span>
     <DeleteButton @click="$emit('delete')" />
   </div>
@@ -14,21 +14,14 @@ export default {
   props: {
     todo: {},
     title: String,
-    isChecked: {
-      type: Boolean,
-      default: false,
-    },
+    isChecked: Boolean,
   },
   components: {
     Checkbox,
     DeleteButton,
   },
   methods: {
-    ...mapActions(["deleteTodo"]),
-    //   removeTodo(id) {
-    //     this.$store.dispatch("deleteTodo", id);
-    //   },
-    // },
+    ...mapActions(["deleteTask"]),
   },
 };
 </script>

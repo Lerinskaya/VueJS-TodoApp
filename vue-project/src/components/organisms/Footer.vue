@@ -6,6 +6,7 @@
       :key="tab.id"
       :title="tab.title"
       :isActive="tab.isActive"
+      @click="changeTabStatus(tab.title)"
     />
   </footer>
 </template>
@@ -13,7 +14,7 @@
 <script>
 import TabButton from "@/components/atoms/TabButton";
 import TaskCounter from "@/components/atoms/TaskCounter";
-import { mapGetters } from "vuex";
+import { mapGetters, mapMutations } from "vuex";
 export default {
   components: {
     TabButton,
@@ -21,6 +22,9 @@ export default {
   },
   computed: {
     ...mapGetters(["tabButtons"]),
+  },
+  methods: {
+    ...mapMutations(["changeTabStatus"]),
   },
 };
 </script>
@@ -45,8 +49,6 @@ export default {
   }
   div:nth-child(2) {
     margin-left: 8rem;
-    border: 1px solid $brownBorder;
-    border-radius: 0.625rem;
     padding: 0.3rem;
     margin-right: 1.56rem;
     @media (max-width: 980px) {

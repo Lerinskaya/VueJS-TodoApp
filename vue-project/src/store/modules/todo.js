@@ -1,15 +1,12 @@
 export default {
   state: {
     tabs: [
-      { id: 1, title: "All" },
-      { id: 2, title: "Active" },
-      { id: 3, title: "Completed" },
+      { id: 1, title: "All", isActive: true },
+      { id: 2, title: "Active", isActive: false },
+      { id: 3, title: "Completed", isActive: false },
     ],
-    todos: [
-      { id: 1, title: "Task 1", isActive: true },
-      { id: 2, title: "Task 2", isActive: false },
-      { id: 3, title: "Task 3", isActive: false },
-    ],
+    todos: [],
+    filter: "All",
   },
   getters: {
     allTodos: (state) => state.todos,
@@ -17,34 +14,17 @@ export default {
     getActiveTasks(state) {
       return state.todos.filter((todo) => todo.isChecked === false);
     },
+    tabButtons: (state) => state.tabs,
 
-    tabButtons(state) {
-      return state.tabs;
-    },
-  },
-  mutations: {
-    add_todo(state, todo) {
-      state.todos.push(todo);
-    },
-    deleteTodo(state, id) {
-      state.todos = state.todos.filter((todo) => todo.id != id);
-    },
     filterTasks(state) {
-      if (state.title == 'all') {
+      if (state.filter == 'All') {
         return state.todos
-      } else if (state.title == 'active') {
+      } else if (state.filter == 'Active') {
         return state.todos.filter((todo) => todo.isChecked === false)
-      } else if (state.title == 'completed') {
+      } else if (state.filter == 'Completed') {
         return state.todos.filter((todo) => todo.isChecked === true)
       }
       return state.todos;
-    },
-    changeTaskStatus(state, id) {
-      state.tasks.map((todo) => {
-        if (todo.id == id) {
-          todo.isChecked = !todo.isChecked;
-        }
-      });
     },
   },
   actions: {
@@ -54,7 +34,33 @@ export default {
 
     deleteTask({ commit }, id) {
       commit("deleteTodo", id)
-      console.log('GGGGGGG')
     }
-  }
+  },
+  mutations: {
+    add_todo(state, todo) {
+      state.todos.push(todo);
+
+    },
+    deleteTodo(state, id) {
+      state.todos = state.todos.filter((todo) => todo.id != id);
+    },
+    changeTaskStatus(state, id) {
+      state.todos.map((todo) => {
+        if (todo.id == id) {
+          todo.isChecked = !todo.isChecked;
+        }
+      });
+    },
+    changeTabStatus(state, title) {
+      state.filter = title;
+      state.tabs = state.tabs.map((tab) => {
+        if (tab.title === title) {
+          tab.isActive = true;
+        } else {
+          tab.isActive = false;
+        }
+        return tab;
+      });
+    },
+  },
 }
