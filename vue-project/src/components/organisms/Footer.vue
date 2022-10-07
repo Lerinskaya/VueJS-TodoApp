@@ -7,25 +7,23 @@
       v-for="tab in tabs"
       :key="tab.id"
       :title="tab.title"
-      :isActive="$store.state.filter === tab.title"
-      @click="changeTabStatus(tab.title)"
+      :isActive="$store.state.todo.filter === tab.title"
+      @click="() => changeTab(tab.title)"
     />
   </footer>
 </template>
 
 <script>
 import TabButton from "@/components/atoms/TabButton";
-import { mapGetters, mapMutations } from "vuex";
+import { mapGetters } from "vuex";
 export default {
-  props: {
-    isActive: Boolean,
-  },
   data() {
     return {
+      todos: [],
       tabs: [
-        { id: 1, title: "All", isActive: true },
-        { id: 2, title: "Active", isActive: false },
-        { id: 3, title: "Completed", isActive: false },
+        { id: 1, title: "All" },
+        { id: 2, title: "Active" },
+        { id: 3, title: "Completed" },
       ],
     };
   },
@@ -33,20 +31,11 @@ export default {
     TabButton,
   },
   computed: {
-    ...mapGetters(["tabButtons", "allTodos", "getActiveTasks"]),
+    ...mapGetters(["allTodos", "getActiveTasks"]),
   },
   methods: {
-    // ...mapMutations(["changeTabStatus"]),
-    changeTabStatus(tabs, title) {
-      $store.state.filter = title;
-      tabs = tabs.map((tab) => {
-        if (tab.title === title) {
-          tab.isActive = true;
-        } else {
-          tab.isActive = false;
-        }
-        return tab;
-      });
+    changeTab(title) {
+      this.$store.commit("changeTabStatus", title);
     },
   },
 };

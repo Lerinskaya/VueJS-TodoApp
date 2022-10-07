@@ -1,11 +1,6 @@
 import { v4 } from "uuid";
 export default {
   state: {
-    // tabs: [
-    //   { id: 1, title: "All", isActive: true },
-    //   { id: 2, title: "Active", isActive: false },
-    //   { id: 3, title: "Completed", isActive: false },
-    // ],
     todos: [],
     filter: "All",
   },
@@ -15,7 +10,6 @@ export default {
     getActiveTasks(state) {
       return state.todos.filter((todo) => todo.isChecked === false);
     },
-    tabButtons: (state) => state.tabs,
 
     filterTasks(state) {
       if (state.filter == 'All') {
@@ -29,9 +23,6 @@ export default {
     },
   },
   mutations: {
-    textChange(e) {
-      this.todoText = e.target.value;
-    },
     addTodo(state, todoText) {
       state.todos.push({
         id: v4(),
@@ -49,17 +40,9 @@ export default {
         }
       });
     },
-    // changeTabStatus(state, title) {
-    //   state.filter = title;
-    //   state.tabs = state.tabs.map((tab) => {
-    //     if (tab.title === title) {
-    //       tab.isActive = true;
-    //     } else {
-    //       tab.isActive = false;
-    //     }
-    //     return tab;
-    //   });
-    // },
+    changeTabStatus(state, title) {
+      state.filter = title;
+    },
   },
   actions: {
   },

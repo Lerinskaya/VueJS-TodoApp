@@ -5,18 +5,13 @@
       placeholder="Add new task"
       @keyup.enter="$emit('keyup')"
       @change="$emit('change')"
-      :value="todoText"
+      v-bind:value="todoText"
+      v-on:input="$emit('input', $event.target.value)"
     />
   </div>
 </template>
 
 <script>
-export default {
-  props: {
-    todoText: "",
-    value: String,
-  },
-};
 </script>
 
 <style lang="scss" module>

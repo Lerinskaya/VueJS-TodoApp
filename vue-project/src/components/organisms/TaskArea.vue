@@ -10,7 +10,7 @@
       @changes="changeTaskStatus(todo.id)"
     />
 
-    <AddTask @keyup="addTodoItem" @change="todoTextChange" :value="todoText" />
+    <AddTask @keyup="addTodoItem" @change="todoTextChange" v-model="todoText" />
   </div>
 </template>
 
@@ -19,34 +19,19 @@ import { mapGetters, mapMutations } from "vuex";
 import Task from "@/components/molecules/Task";
 import AddTask from "@/components/atoms/AddTask";
 export default {
-  // props: {
-  //   todo: [],
-  //   value: String,
-  // },
   data() {
     return {
       todoText: "",
-      value: String,
     };
   },
   methods: {
-    ...mapMutations(
-      ["changeTaskStatus"],
-      ["deleteTask"],
-      ["addTodo"],
-      ["textChange"]
-    ),
+    ...mapMutations(["changeTaskStatus"], ["deleteTask"], ["addTodo"]),
     deleteTodo(id) {
       this.$store.commit("deleteTask", id);
     },
-    todoTextChange(id) {
-      // this.todoText = e.target.value;
-      this.$store.commit("textChange", id);
-    },
     addTodoItem() {
       this.$store.commit("addTodo", this.todoText);
-      // this.addTodo(this.todoText);
-      // this.todoText = "";
+      this.todoText = "";
     },
   },
   computed: {

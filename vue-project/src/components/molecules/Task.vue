@@ -11,7 +11,6 @@ import Checkbox from "@/components/atoms/Checkbox";
 import DeleteButton from "@/components/atoms/DeleteButton";
 export default {
   props: {
-    todo: {},
     title: String,
     isChecked: Boolean,
   },
