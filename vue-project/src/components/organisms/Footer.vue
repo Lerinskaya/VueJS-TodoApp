@@ -17,6 +17,9 @@
 import TabButton from "@/components/atoms/TabButton";
 import { mapGetters, mapMutations } from "vuex";
 export default {
+  props: {
+    isActive: Boolean,
+  },
   data() {
     return {
       tabs: [
