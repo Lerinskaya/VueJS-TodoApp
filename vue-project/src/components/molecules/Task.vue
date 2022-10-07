@@ -1,6 +1,6 @@
 <template>
   <div :class="$style.todo">
-    <Checkbox @click="$emit('change')" :isChecked="isChecked" />
+    <Checkbox @click="$emit('changes')" :isChecked="isChecked" />
     <span :class="$style.task">{{ title }}</span>
     <DeleteButton @click="$emit('delete')" />
   </div>
@@ -9,7 +9,6 @@
 <script>
 import Checkbox from "@/components/atoms/Checkbox";
 import DeleteButton from "@/components/atoms/DeleteButton";
-import { mapActions } from "vuex";
 export default {
   props: {
     todo: {},
@@ -19,9 +18,6 @@ export default {
   components: {
     Checkbox,
     DeleteButton,
-  },
-  methods: {
-    ...mapActions(["deleteTask"]),
   },
 };
 </script>
@@ -70,5 +66,8 @@ export default {
 }
 .todo:first-child {
   margin-top: 1.875rem;
+}
+.done {
+  text-decoration: line-through;
 }
 </style>

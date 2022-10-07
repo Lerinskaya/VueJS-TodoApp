@@ -1,10 +1,11 @@
+import { v4 } from "uuid";
 export default {
   state: {
-    tabs: [
-      { id: 1, title: "All", isActive: true },
-      { id: 2, title: "Active", isActive: false },
-      { id: 3, title: "Completed", isActive: false },
-    ],
+    // tabs: [
+    //   { id: 1, title: "All", isActive: true },
+    //   { id: 2, title: "Active", isActive: false },
+    //   { id: 3, title: "Completed", isActive: false },
+    // ],
     todos: [],
     filter: "All",
   },
@@ -27,21 +28,18 @@ export default {
       return state.todos;
     },
   },
-  actions: {
-    addTodo({ commit }, todo) {
-      commit("add_todo", todo)
-    },
-
-    deleteTask({ commit }, id) {
-      commit("deleteTodo", id)
-    }
-  },
   mutations: {
-    add_todo(state, todo) {
-      state.todos.push(todo);
-
+    textChange(e) {
+      this.todoText = e.target.value;
     },
-    deleteTodo(state, id) {
+    addTodo(state, todoText) {
+      state.todos.push({
+        id: v4(),
+        title: todoText,
+        isChecked: false,
+      });
+    },
+    deleteTask(state, id) {
       state.todos = state.todos.filter((todo) => todo.id != id);
     },
     changeTaskStatus(state, id) {
@@ -51,16 +49,18 @@ export default {
         }
       });
     },
-    changeTabStatus(state, title) {
-      state.filter = title;
-      state.tabs = state.tabs.map((tab) => {
-        if (tab.title === title) {
-          tab.isActive = true;
-        } else {
-          tab.isActive = false;
-        }
-        return tab;
-      });
-    },
+    // changeTabStatus(state, title) {
+    //   state.filter = title;
+    //   state.tabs = state.tabs.map((tab) => {
+    //     if (tab.title === title) {
+    //       tab.isActive = true;
+    //     } else {
+    //       tab.isActive = false;
+    //     }
+    //     return tab;
+    //   });
+    // },
+  },
+  actions: {
   },
 }

@@ -3,36 +3,18 @@
     <input
       type="text"
       placeholder="Add new task"
-      @keyup.enter="addTodoI"
-      @change="todoTextChange"
-      v-bind:value="todoText"
+      @keyup.enter="$emit('keyup')"
+      @change="$emit('change')"
+      :value="todoText"
     />
   </div>
 </template>
 
 <script>
-import { mapActions } from "vuex";
-import { v4 } from "uuid";
-
 export default {
-  data() {
-    return {
-      todoText: "",
-    };
-  },
-  methods: {
-    ...mapActions(["addTodo"]),
-    todoTextChange(e) {
-      this.todoText = e.target.value;
-    },
-    addTodoI() {
-      this.addTodo({
-        id: v4(),
-        title: this.todoText,
-        isChecked: false,
-      });
-      this.todoText = "";
-    },
+  props: {
+    todoText: "",
+    value: String,
   },
 };
 </script>

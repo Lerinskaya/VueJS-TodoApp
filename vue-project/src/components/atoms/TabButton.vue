@@ -1,12 +1,10 @@
 <template>
-  <div>
-    <button
-      :class="[$style.tab, { [$style.active]: isActive }]"
-      @click="$emit('click')"
-    >
-      {{ title }}
-    </button>
-  </div>
+  <button
+    :class="[$style.tab, { [$style.active]: isActive }]"
+    @click="$emit('click')"
+  >
+    {{ title }}
+  </button>
 </template>
 
 <script>
