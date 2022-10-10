@@ -55,6 +55,9 @@ export default {
   .todoLeft {
     margin-right: 0;
     cursor: pointer;
+    @media (max-width: 450px) {
+      margin-right: 0.5rem;
+    }
   }
   @media (max-width: 980px) {
     font-size: 1rem;

@@ -28,6 +28,9 @@ export default {
   color: rgba(127, 75, 19, 0.42);
   border: none;
   cursor: pointer;
+  @media (max-width: 450px) {
+    font-size: 0.8rem;
+  }
 }
 
 button {

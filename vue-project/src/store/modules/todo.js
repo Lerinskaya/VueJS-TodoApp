@@ -29,9 +29,11 @@ export default {
         title: todoText,
         isChecked: false,
       });
+      localStorage.setItem("todos", JSON.stringify(state.todos));
     },
     deleteTask(state, id) {
       state.todos = state.todos.filter((todo) => todo.id != id);
+      localStorage.setItem("todos", JSON.stringify(state.todos));
     },
     changeTaskStatus(state, id) {
       state.todos.map((todo) => {
@@ -42,6 +44,9 @@ export default {
     },
     changeTabStatus(state, title) {
       state.filter = title;
+    },
+    getStorage(state) {
+      state.todos = JSON.parse(localStorage.getItem("todos")) || [];
     },
   },
   actions: {
