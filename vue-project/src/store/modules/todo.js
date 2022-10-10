@@ -41,6 +41,7 @@ export default {
           todo.isChecked = !todo.isChecked;
         }
       });
+      localStorage.setItem("todos", JSON.stringify(state.todos));
     },
     changeTabStatus(state, title) {
       state.filter = title;
