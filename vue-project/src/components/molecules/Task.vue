@@ -1,8 +1,8 @@
 <template>
   <div :class="$style.todo">
-    <Checkbox :isChecked="isChecked" />
+    <Checkbox @click="$emit('changes')" :isChecked="isChecked" />
     <span :class="$style.task">{{ title }}</span>
-    <DeleteButton />
+    <DeleteButton @click="$emit('delete')" />
   </div>
 </template>
 
@@ -12,10 +12,7 @@ import DeleteButton from "@/components/atoms/DeleteButton";
 export default {
   props: {
     title: String,
-    isChecked: {
-      type: Boolean,
-      default: false,
-    },
+    isChecked: Boolean,
   },
   components: {
     Checkbox,
@@ -68,5 +65,8 @@ export default {
 }
 .todo:first-child {
   margin-top: 1.875rem;
+}
+.done {
+  text-decoration: line-through;
 }
 </style>

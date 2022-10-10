@@ -1,13 +1,17 @@
 <template>
   <div :class="$style.add">
-    <input type="text" placeholder="Add new task" />
+    <input
+      type="text"
+      placeholder="Add new task"
+      @keyup.enter="$emit('keyup')"
+      @change="$emit('change')"
+      v-bind:value="todoText"
+      v-on:input="$emit('input', $event.target.value)"
+    />
   </div>
 </template>
 
 <script>
-export default {
-  name: "App",
-};
 </script>
 
 <style lang="scss" module>

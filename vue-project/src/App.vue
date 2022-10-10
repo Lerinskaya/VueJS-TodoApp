@@ -18,19 +18,13 @@ import Footer from "@/components/organisms/Footer";
 
 export default {
   name: "App",
-  data() {
-    return {
-      todos: [
-        { id: 1, title: "Task 1", completed: false },
-        { id: 2, title: "Task 2", completed: false },
-        { id: 3, title: "Task 3", completed: false },
-      ],
-    };
-  },
   components: {
     Title,
     TaskArea,
     Footer,
+  },
+  mounted() {
+    this.$store.commit("getStorage");
   },
 };
 </script>

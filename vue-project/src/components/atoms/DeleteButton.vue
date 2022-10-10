@@ -1,16 +1,13 @@
 <template>
-  <button>&times;</button>
+  <button :class="$style.delete" @click="$emit('click')">&times;</button>
 </template>
 
 <script>
-export default {
-  name: "App",
-  components: {},
-};
+export default {};
 </script>
 
 <style lang="scss" module>
-button {
+.delete {
   margin-right: 1.25rem;
   border: 1.5px solid $lightOrange;
   border-radius: 2px;
@@ -18,7 +15,10 @@ button {
   background-color: $darkPeach;
   max-height: 1.5rem;
 }
-button:hover {
+.delete:active {
+  color: red;
+}
+.delete:hover {
   border: 1.5px solid $orange;
   color: $orange;
   cursor: pointer;

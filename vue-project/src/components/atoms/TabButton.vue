@@ -1,7 +1,10 @@
 <template>
-  <div>
-    <p :class="$style.tab">{{ title }}</p>
-  </div>
+  <button
+    :class="[$style.tab, { [$style.active]: isActive }]"
+    @click="$emit('click')"
+  >
+    {{ title }}
+  </button>
 </template>
 
 <script>
@@ -18,14 +21,24 @@ export default {
 
 <style lang="scss" module>
 .tab {
+  font-family: "Open Sans";
+  background: #ffca93;
+  font-weight: 600;
+  font-size: 20px;
+  color: rgba(127, 75, 19, 0.42);
+  border: none;
   cursor: pointer;
+  @media (max-width: 450px) {
+    font-size: 0.8rem;
+  }
 }
-.tab:nth-last-child(3) {
-  margin-left: 8rem;
+
+button {
+  margin-right: 0;
+}
+.active {
   border: 1px solid $brownBorder;
-  border-radius: 0.625rem;
-  padding: 0.3rem;
-  margin-right: 1.56rem;
+  border-radius: 10px;
 }
 @media (max-width: 980px) {
   p {

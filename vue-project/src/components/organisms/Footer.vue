@@ -1,16 +1,25 @@
 <template>
   <footer :class="$style.footer">
-    <TaskCounter />
-    <TabButton v-for="tab in tabs" :key="tab.id" :title="tab.title" />
+    <p :class="$style.todoLeft">
+      {{ getActiveTasks.length }}/{{ allTodos.length }} left
+    </p>
+    <TabButton
+      v-for="tab in tabs"
+      :key="tab.id"
+      :title="tab.title"
+      :isActive="$store.state.todo.filter === tab.title"
+      @click="() => changeTab(tab.title)"
+    />
   </footer>
 </template>
 
 <script>
 import TabButton from "@/components/atoms/TabButton";
-import TaskCounter from "@/components/atoms/TaskCounter";
+import { mapGetters } from "vuex";
 export default {
   data() {
     return {
+      todos: [],
       tabs: [
         { id: 1, title: "All" },
         { id: 2, title: "Active" },
@@ -20,7 +29,14 @@ export default {
   },
   components: {
     TabButton,
-    TaskCounter,
+  },
+  computed: {
+    ...mapGetters(["allTodos", "getActiveTasks"]),
+  },
+  methods: {
+    changeTab(title) {
+      this.$store.commit("changeTabStatus", title);
+    },
   },
 };
 </script>
@@ -36,6 +52,13 @@ export default {
   font-size: 1.25rem;
   padding: 0.7rem 1.875rem;
   align-items: center;
+  .todoLeft {
+    margin-right: 0;
+    cursor: pointer;
+    @media (max-width: 450px) {
+      margin-right: 0.5rem;
+    }
+  }
   @media (max-width: 980px) {
     font-size: 1rem;
     padding: 0.3rem 1.875rem;
@@ -45,8 +68,6 @@ export default {
   }
   div:nth-child(2) {
     margin-left: 8rem;
-    border: 1px solid $brownBorder;
-    border-radius: 0.625rem;
     padding: 0.3rem;
     margin-right: 1.56rem;
     @media (max-width: 980px) {

@@ -1,27 +1,41 @@
 <template>
   <div :class="$style.taskArea">
     <Task
-      v-for="todo in todos"
+      v-for="todo in filterTasks"
       :key="todo.id"
+      :id="todo.id"
       :title="todo.title"
-      :isChecked="todo.completed"
+      :isChecked="todo.isChecked"
+      @delete="deleteTodo(todo.id)"
+      @changes="changeTaskStatus(todo.id)"
     />
-    <AddTask />
+
+    <AddTask @keyup="addTodoItem" @change="todoTextChange" v-model="todoText" />
   </div>
 </template>
 
 <script>
+import { mapGetters, mapMutations } from "vuex";
 import Task from "@/components/molecules/Task";
 import AddTask from "@/components/atoms/AddTask";
 export default {
   data() {
     return {
-      todos: [
-        { id: 1, title: "Task 1", completed: false },
-        { id: 2, title: "Task 2", completed: false },
-        { id: 3, title: "Task 3", completed: false },
-      ],
+      todoText: "",
     };
+  },
+  methods: {
+    ...mapMutations(["changeTaskStatus"], ["deleteTask"], ["addTodo"]),
+    deleteTodo(id) {
+      this.$store.commit("deleteTask", id);
+    },
+    addTodoItem() {
+      this.$store.commit("addTodo", this.todoText);
+      this.todoText = "";
+    },
+  },
+  computed: {
+    ...mapGetters(["filterTasks"]),
   },
   components: {
     Task,
@@ -37,6 +51,36 @@ export default {
   padding-bottom: 1.875rem;
   @media (max-width: 800px) {
     padding-top: 1rem;
+  }
+}
+.add {
+  font-family: "Inter";
+  padding: 0.688rem 0;
+  border-radius: 0.625rem;
+  display: flex;
+  color: $lightOrange;
+  background-color: $peach;
+  border: 2px dashed $lightOrange;
+  max-width: 30rem;
+  @media (max-width: 980px) {
+    max-width: 30rem;
+    margin: 1rem;
+  }
+  @media (max-width: 450px) {
+    margin-bottom: 0;
+  }
+  input {
+    font-weight: 400;
+    font-size: 1.25rem;
+    color: $lightOrange;
+    background-color: $peach;
+    border: none;
+    display: flex;
+    text-align: center;
+    @media (max-width: 450px) {
+      max-width: 10rem;
+      font-size: 1rem;
+    }
   }
 }
 </style>
