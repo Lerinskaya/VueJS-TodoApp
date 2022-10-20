@@ -12,6 +12,9 @@
 </template>
 
 <script>
+export default {
+  name: "AddTask",
+};
 </script>
 
 <style lang="scss" module>
