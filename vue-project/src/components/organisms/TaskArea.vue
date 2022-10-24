@@ -10,7 +10,7 @@
       @changes="changeTaskStatus(todo.id)"
     />
 
-    <AddTask @keyup="addTodoItem" @change="todoTextChange" v-model="todoText" />
+    <AddTask @keyup="addTodoItem" v-model="todoText" />
   </div>
 </template>
 
