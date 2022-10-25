@@ -1,14 +1,17 @@
 import { mount } from '@vue/test-utils';
 import AddTask from '@/components/atoms/AddTask.vue';
 
-describe('AddTask.vue', () => {
-    it('enter', () => {
+describe('Atom AddTask Component', () => {
+    it('correct layout', () => {
         const wrapper = mount(AddTask);
-        wrapper.find('input').trigger('keyup.enter');
+        expect(wrapper.html()).toMatchSnapshot();
     });
-    it('has input', () => {
+    it('Task is entered', async () => {
         const wrapper = mount(AddTask);
-        expect(wrapper.html()).toContain('<input type=\"text\" placeholder=\"Add new task\">');
+        await wrapper.find('input').trigger('keyup.enter');
+        await wrapper.find('input').trigger('change');
+        expect(wrapper.emitted().keyup).toBeTruthy();
+        expect(wrapper.emitted().change).toBeTruthy();
     });
 });
 

@@ -1,11 +1,12 @@
 import { mount, createLocalVue } from '@vue/test-utils';
 import Vuex from 'vuex';
 import TaskArea from '@/components/organisms/TaskArea.vue';
+import Task from '@/components/molecules/Task.vue';
 
 const localVue = createLocalVue();
 localVue.use(Vuex);
 
-describe('TaskArea.vue', () => {
+describe('Organism TaskArea Component', () => {
     let store;
     let mutations;
     let getters;
@@ -14,7 +15,6 @@ describe('TaskArea.vue', () => {
         mutations = {
             addTodo: jest.fn(),
             deleteTask: jest.fn(),
-            changeTaskStatus: jest.fn(),
         };
         getters = {
             filterTasks: () => jest.fn(),
@@ -24,12 +24,22 @@ describe('TaskArea.vue', () => {
             getters,
         });
     });
-
-    it('calls mutation addTodo', () => {
+    it('Correct layout', () => {
         const wrapper = mount(TaskArea, {
             store, localVue
         });
-        wrapper.find('input').trigger('keyup.enter');
+        expect(wrapper.html()).toMatchSnapshot();
+    });
+
+    it('calls mutation addTodo', async () => {
+        const wrapper = mount(TaskArea, {
+            store, localVue
+        });
+        await wrapper.find('input').trigger('keyup.enter');
         expect(mutations.addTodo).toHaveBeenCalled();
+    });
+    it('calls getter filterTasks', () => {
+        const wrapper = mount(TaskArea, { store, localVue });
+        expect(wrapper.findComponent(Task)).toBeTruthy();
     });
 });

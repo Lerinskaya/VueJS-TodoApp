@@ -1,9 +1,14 @@
 import Checkbox from '@/components/atoms/Checkbox.vue';
 import { mount } from '@vue/test-utils';
 
-describe('Checkbox.vue', () => {
-    it('is on click', () => {
+describe('Atom Checkbox Component', () => {
+    it('Correct layout', () => {
         const wrapper = mount(Checkbox);
-        wrapper.find('input').trigger('click');
+        expect(wrapper.html()).toMatchSnapshot();
+    });
+    it('is clicked', async () => {
+        const wrapper = mount(Checkbox);
+        await wrapper.find('input').trigger('click');
+        expect(wrapper.emitted().click).toBeTruthy();
     });
 });

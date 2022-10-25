@@ -20,7 +20,7 @@ store.state.tabs = [
 
 describe('store testing', () => {
     it('all todos', () => {
-        expect(store.getters.allTodos.length).toBe(3);
+        expect(store.getters.allTodos.length).toBe(store.state.todos.length);
     });
     it('active todos', () => {
         expect(store.getters.getActiveTasks.length).toBe(2);
@@ -34,11 +34,11 @@ describe('store testing', () => {
         expect(store.getters.filterTasks.length).toBe(1);
     });
     it('adds todo', () => {
-        let todoText = 'Task 4';
+        let todoText;
         store.commit('addTodo', todoText);
-        expect(store.state.todos[3].title).toBe('Task 4');
+        expect(store.state.todos[3].title).toBe(todoText);
     });
-    it('deletes todo', () => {
+    it('delets todo', () => {
         let todosLength = store.state.todos.length;
         store.commit('deleteTask', store.state.todos[0].id);
         expect(store.state.todos.length).toBe(todosLength - 1);
@@ -49,11 +49,7 @@ describe('store testing', () => {
         expect(store.state.todos[1].isChecked).toBe(true);
     });
     it('changes tab status', () => {
-        store.commit('changeTabStatus', store.state.tabs[2].title);
-        expect(store.state.filter).toBe(store.state.tabs[2].title);
-    });
-    it('todos from LocalStorage', () => {
-        store.commit('getStorage');
-        expect(store.state.todos.length).toBe(3);
+        store.commit('changeTabStatus', 'All');
+        expect(store.state.filter).toBe('All');
     });
 });

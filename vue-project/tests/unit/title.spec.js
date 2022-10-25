@@ -1,10 +1,9 @@
 import { mount } from '@vue/test-utils';
 import Title from '@/components/organisms/Title.vue';
-import TitleName from '@/components/atoms/TitleName.vue';
 
-describe('Title.vue', () => {
-    it('has name', () => {
+describe('Atom Title Component', () => {
+    it('Correct layout', () => {
         const wrapper = mount(Title);
-        expect(wrapper.findComponent(TitleName).exists()).toBe(true);
+        expect(wrapper.html()).toMatchSnapshot();
     });
 });
