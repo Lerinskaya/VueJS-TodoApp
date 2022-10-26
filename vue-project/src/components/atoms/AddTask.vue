@@ -12,6 +12,13 @@
 </template>
 
 <script>
+export default {
+  name: "AddTask",
+  props: {
+    value: String,
+    todoText: "",
+  },
+};
 </script>
 
 <style lang="scss" module>
