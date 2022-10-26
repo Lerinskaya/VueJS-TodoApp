@@ -9,7 +9,6 @@
       @delete="deleteTodo(todo.id)"
       @changes="changeTaskStatus(todo.id)"
     />
-
     <AddTask @keyup="addTodoItem" v-model="todoText" />
   </div>
 </template>

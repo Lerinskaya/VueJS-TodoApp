@@ -1,5 +1,4 @@
 module.exports = {
-  // testEnvironment: 'jsdom',
   preset: "@vue/cli-plugin-unit-jest",
   globals: {
     "vue-jest": {
