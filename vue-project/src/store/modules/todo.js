@@ -12,12 +12,12 @@ export default {
     },
 
     filterTasks(state) {
-      if (state.filter == "All") {
-        return state.todos;
-      } else if (state.filter == "Active") {
-        return state.todos.filter((todo) => todo.isChecked === false);
-      } else if (state.filter == "Completed") {
-        return state.todos.filter((todo) => todo.isChecked === true);
+      if (state.filter == 'All') {
+        return state.todos
+      } else if (state.filter == 'Active') {
+        return state.todos.filter((todo) => todo.isChecked === false)
+      } else if (state.filter == 'Completed') {
+        return state.todos.filter((todo) => todo.isChecked === true)
       }
       return state.todos;
     },
@@ -50,5 +50,6 @@ export default {
       state.todos = JSON.parse(localStorage.getItem("todos")) || [];
     },
   },
-  actions: {},
-};
+  actions: {
+  },
+}

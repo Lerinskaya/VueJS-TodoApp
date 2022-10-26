@@ -15,6 +15,7 @@
 import Title from "@/components/organisms/Title";
 import TaskArea from "@/components/organisms/TaskArea";
 import Footer from "@/components/organisms/Footer";
+
 export default {
   name: "App",
   components: {
@@ -100,4 +101,8 @@ export default {
     }
   }
 }
+<<<<<<< HEAD
 </style>
+=======
+</style>
+>>>>>>> feature/V-7
