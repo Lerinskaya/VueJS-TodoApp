@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import Checkbox from "@/components/atoms/Checkbox";
+import Checkbox from "@/components/atoms/CheckBox";
 import DeleteButton from "@/components/atoms/DeleteButton";
 export default {
   props: {
