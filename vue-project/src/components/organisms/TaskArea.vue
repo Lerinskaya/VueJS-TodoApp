@@ -1,5 +1,9 @@
 <template>
   <div :class="$style.taskArea">
+    <div :class="$style.empty" v-if="filterTasks.length == 0">
+      The task list is empty! <br />
+      Add a new task!
+    </div>
     <Task
       v-for="todo in filterTasks"
       :key="todo.id"
@@ -9,7 +13,7 @@
       @delete="deleteTodo(todo.id)"
       @changes="changeTaskStatus(todo.id)"
     />
-    <AddTask @keyup="addTodoItem" v-model="todoText" />
+    <AddTask @keyup="addTodoItem(), clearInput()" v-model.trim="todoText" />
   </div>
 </template>
 
@@ -24,13 +28,16 @@ export default {
     };
   },
   methods: {
-    ...mapMutations(["changeTaskStatus"], ["deleteTask"], ["addTodo"]),
+    ...mapMutations(["changeTaskStatus"]),
     deleteTodo(id) {
       this.$store.commit("deleteTask", id);
     },
     addTodoItem() {
       this.$store.commit("addTodo", this.todoText);
       this.todoText = "";
+    },
+    clearInput() {
+      input.value = "";
     },
   },
   computed: {
@@ -48,6 +55,14 @@ export default {
   background-color: $lightPeach;
   padding-top: 1.875rem;
   padding-bottom: 1.875rem;
+  .empty {
+    padding-bottom: 2rem;
+    font-size: 2rem;
+    font-family: "Open Sans";
+    font-weight: 600;
+    color: $lightBrown;
+    text-align: center;
+  }
   @media (max-width: 800px) {
     padding-top: 1rem;
   }

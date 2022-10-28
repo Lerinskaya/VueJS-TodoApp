@@ -1,4 +1,4 @@
-import Checkbox from '@/components/atoms/Checkbox.vue';
+import Checkbox from '@/components/atoms/CheckBox.vue';
 import { mount } from '@vue/test-utils';
 
 describe('Atom Checkbox Component', () => {

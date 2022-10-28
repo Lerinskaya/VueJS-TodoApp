@@ -46,6 +46,7 @@ export default {
   }
   .task {
     margin-left: -8rem;
+    position: relative;
     @media (max-width: 850px) {
       input {
         font-size: 1rem;
@@ -68,5 +69,22 @@ export default {
 }
 .done {
   text-decoration: line-through;
+}
+.checkbox:checked > .task::after {
+  width: 100%;
+}
+.task::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: $brown;
+  transform: translateY(-50%);
+  transition: width 0.3s;
+}
+.checkbox:checked ~ .task::after {
+  width: 100%;
 }
 </style>

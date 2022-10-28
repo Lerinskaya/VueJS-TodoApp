@@ -15,8 +15,13 @@
 export default {
   name: "AddTask",
   props: {
-    value: String,
+    value: "",
     todoText: "",
+  },
+  methods: {
+    clearInput(event) {
+      event.target.value = "";
+    },
   },
 };
 </script>
