@@ -1,6 +1,6 @@
 <template>
   <div :class="$style.taskArea">
-    <div :class="$style.empty" v-if="filterTasks.length == 0">
+    <div :class="$style.empty" v-if="filterTasks.length == 0" data-cy="notasks">
       The task list is empty! <br />
       Add a new task!
     </div>
@@ -13,7 +13,7 @@
       @delete="deleteTodo(todo.id)"
       @changes="changeTaskStatus(todo.id)"
     />
-    <AddTask @keyup="addTodoItem(), clearInput()" v-model.trim="todoText" />
+    <AddTask @keyup="addTodoItem" />
   </div>
 </template>
 
@@ -24,7 +24,7 @@ import AddTask from "@/components/atoms/AddTask";
 export default {
   data() {
     return {
-      todoText: "",
+      value: "",
     };
   },
   methods: {
@@ -32,12 +32,8 @@ export default {
     deleteTodo(id) {
       this.$store.commit("deleteTask", id);
     },
-    addTodoItem() {
-      this.$store.commit("addTodo", this.todoText);
-      this.todoText = "";
-    },
-    clearInput() {
-      input.value = "";
+    addTodoItem(value) {
+      this.$store.commit("addTodo", value);
     },
   },
   computed: {

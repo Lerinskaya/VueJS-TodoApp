@@ -1,7 +1,11 @@
 <template>
   <div :class="$style.todo">
     <Checkbox @click="$emit('changes')" :isChecked="isChecked" />
-    <span :class="$style.task">{{ title }}</span>
+    <span
+      :class="[$style.task, { [$style.done]: isChecked }]"
+      data-cy="task__title"
+      >{{ title }}</span
+    >
     <DeleteButton @click="$emit('delete')" />
   </div>
 </template>
@@ -69,22 +73,5 @@ export default {
 }
 .done {
   text-decoration: line-through;
-}
-.checkbox:checked > .task::after {
-  width: 100%;
-}
-.task::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background-color: $brown;
-  transform: translateY(-50%);
-  transition: width 0.3s;
-}
-.checkbox:checked ~ .task::after {
-  width: 100%;
 }
 </style>

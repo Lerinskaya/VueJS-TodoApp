@@ -23,10 +23,10 @@ export default {
     },
   },
   mutations: {
-    addTodo(state, todoText) {
+    addTodo(state, value) {
       state.todos.push({
         id: v4(),
-        title: todoText,
+        title: value,
         isChecked: false,
       });
       localStorage.setItem("todos", JSON.stringify(state.todos));

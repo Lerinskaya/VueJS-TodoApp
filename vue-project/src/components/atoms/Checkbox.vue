@@ -6,7 +6,7 @@
       :checked="isChecked"
       @click="$emit('click')"
     />
-    <span :class="$style.fake" />
+    <span :class="$style.fake" data-cy="fake__checkbox" />
   </label>
 </template>
 

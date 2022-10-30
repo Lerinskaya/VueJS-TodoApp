@@ -3,10 +3,8 @@
     <input
       type="text"
       placeholder="Add new task"
-      @keyup.enter="$emit('keyup')"
-      @change="$emit('change')"
-      v-bind:value="todoText"
-      v-on:input="$emit('input', $event.target.value)"
+      @keyup.enter="clearInput"
+      v-model="value"
     />
   </div>
 </template>
@@ -16,11 +14,11 @@ export default {
   name: "AddTask",
   props: {
     value: "",
-    todoText: "",
   },
   methods: {
-    clearInput(event) {
-      event.target.value = "";
+    clearInput() {
+      this.$emit("keyup", this.value);
+      this.value = "";
     },
   },
 };
