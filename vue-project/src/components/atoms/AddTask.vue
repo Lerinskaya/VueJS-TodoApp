@@ -34,6 +34,7 @@ export default {
   background-color: $peach;
   border: 2px dashed $lightOrange;
   max-width: 30rem;
+  margin-top: 1rem;
   @media (max-width: 980px) {
     max-width: 30rem;
     margin: 1rem;
@@ -47,6 +48,7 @@ export default {
     color: $lightOrange;
     background-color: $peach;
     border: none;
+    outline: none;
     display: flex;
     text-align: center;
     @media (max-width: 450px) {
@@ -54,5 +56,11 @@ export default {
       font-size: 1rem;
     }
   }
+}
+.add:hover {
+  border: 2px dashed $orange;
+}
+.add:active {
+  border: 2px solid $orange;
 }
 </style>

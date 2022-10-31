@@ -1,12 +1,14 @@
 <template>
-  <div :class="$style.todo">
-    <Checkbox @click="$emit('changes')" :isChecked="isChecked" />
-    <span
-      :class="[$style.task, { [$style.done]: isChecked }]"
-      data-cy="task__title"
-      >{{ title }}</span
-    >
-    <DeleteButton @click="$emit('delete')" />
+  <div>
+    <div :class="$style.todo">
+      <Checkbox @click="$emit('changes')" :isChecked="isChecked" />
+      <span
+        :class="[$style.task, { [$style.done]: isChecked }]"
+        data-cy="task__title"
+        >{{ title }}</span
+      >
+      <DeleteButton @click="$emit('delete')" />
+    </div>
   </div>
 </template>
 
@@ -38,6 +40,9 @@ export default {
   padding: 0.688rem 0;
   margin-top: 0;
   border-radius: 0.625rem;
+  .done {
+    text-decoration: line-through;
+  }
   @media (max-width: 980px) {
     max-width: 30rem;
     margin: 1rem;
@@ -68,10 +73,7 @@ export default {
     }
   }
 }
-.todo:first-child {
-  margin-top: 1.875rem;
-}
-.done {
-  text-decoration: line-through;
+.todo:last-child {
+  margin-bottom: 0.56rem;
 }
 </style>

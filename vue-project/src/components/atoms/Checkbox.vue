@@ -38,6 +38,9 @@ label {
     border-radius: 5px;
     margin-right: 1.4rem;
   }
+  .fake:hover {
+    background: $peach;
+  }
 }
 .fake::before {
   content: "";
