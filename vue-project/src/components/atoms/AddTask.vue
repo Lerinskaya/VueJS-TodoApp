@@ -3,10 +3,8 @@
     <input
       type="text"
       placeholder="Add new task"
-      @keyup.enter="$emit('keyup')"
-      @change="$emit('change')"
-      v-bind:value="todoText"
-      v-on:input="$emit('input', $event.target.value)"
+      @keyup.enter="clearInput"
+      v-model="value"
     />
   </div>
 </template>
@@ -15,8 +13,13 @@
 export default {
   name: "AddTask",
   props: {
-    value: String,
-    todoText: "",
+    value: "",
+  },
+  methods: {
+    clearInput() {
+      this.$emit("keyup", this.value);
+      this.value = "";
+    },
   },
 };
 </script>
@@ -31,6 +34,7 @@ export default {
   background-color: $peach;
   border: 2px dashed $lightOrange;
   max-width: 30rem;
+  margin-top: 1rem;
   @media (max-width: 980px) {
     max-width: 30rem;
     margin: 1rem;
@@ -44,6 +48,7 @@ export default {
     color: $lightOrange;
     background-color: $peach;
     border: none;
+    outline: none;
     display: flex;
     text-align: center;
     @media (max-width: 450px) {
@@ -51,5 +56,11 @@ export default {
       font-size: 1rem;
     }
   }
+}
+.add:hover {
+  border: 2px dashed $orange;
+}
+.add:active {
+  border: 2px solid $orange;
 }
 </style>

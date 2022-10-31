@@ -1,15 +1,23 @@
 <template>
   <div :class="$style.taskArea">
-    <Task
-      v-for="todo in filterTasks"
-      :key="todo.id"
-      :id="todo.id"
-      :title="todo.title"
-      :isChecked="todo.isChecked"
-      @delete="deleteTodo(todo.id)"
-      @changes="changeTaskStatus(todo.id)"
-    />
-    <AddTask @keyup="addTodoItem" v-model="todoText" />
+    <div :class="$style.empty" v-if="filterTasks.length == 0" data-cy="notasks">
+      The task list is empty! <br />
+      Add a new task!
+    </div>
+    <div :class="$style.tasksContent">
+      <transition-group>
+        <Task
+          v-for="todo in filterTasks"
+          :key="todo.id"
+          :id="todo.id"
+          :title="todo.title"
+          :isChecked="todo.isChecked"
+          @delete="deleteTodo(todo.id)"
+          @changes="changeTaskStatus(todo.id)"
+        />
+      </transition-group>
+    </div>
+    <AddTask @keyup="addTodoItem" />
   </div>
 </template>
 
@@ -20,18 +28,18 @@ import AddTask from "@/components/atoms/AddTask";
 export default {
   data() {
     return {
-      todoText: "",
+      value: "",
     };
   },
   methods: {
-    ...mapMutations(["changeTaskStatus"], ["deleteTask"], ["addTodo"]),
+    ...mapMutations(["changeTaskStatus"]),
     deleteTodo(id) {
       this.$store.commit("deleteTask", id);
     },
-    addTodoItem() {
-      this.$store.commit("addTodo", this.todoText);
-      this.todoText = "";
+    addTodoItem(value) {
+      this.$store.commit("addTodo", value);
     },
+    addSubTask() {},
   },
   computed: {
     ...mapGetters(["filterTasks"]),
@@ -46,8 +54,31 @@ export default {
 <style lang="scss" module>
 .taskArea {
   background-color: $lightPeach;
-  padding-top: 1.875rem;
+  padding-top: 2.875rem;
   padding-bottom: 1.875rem;
+  .tasksContent {
+    min-height: 15rem;
+    max-height: 22rem;
+    overflow-y: auto;
+    width: 97%;
+  }
+  ::-webkit-scrollbar {
+    width: 0.5rem;
+    border-radius: 5px;
+    background-color: $lightOrange;
+  }
+  ::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: $backgroundGradient;
+  }
+  .empty {
+    margin-bottom: -8rem;
+    font-size: 2rem;
+    font-family: "Open Sans";
+    font-weight: 600;
+    color: $lightBrown;
+    text-align: center;
+  }
   @media (max-width: 800px) {
     padding-top: 1rem;
   }

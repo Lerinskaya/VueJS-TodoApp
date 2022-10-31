@@ -23,10 +23,10 @@ export default {
     },
   },
   mutations: {
-    addTodo(state, todoText) {
+    addTodo(state, value) {
       state.todos.push({
         id: v4(),
-        title: todoText,
+        title: value,
         isChecked: false,
       });
       localStorage.setItem("todos", JSON.stringify(state.todos));
@@ -35,6 +35,7 @@ export default {
       state.todos = state.todos.filter((todo) => todo.id != id);
       localStorage.setItem("todos", JSON.stringify(state.todos));
     },
+
     changeTaskStatus(state, id) {
       state.todos.map((todo) => {
         if (todo.id == id) {

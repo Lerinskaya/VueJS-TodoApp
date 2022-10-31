@@ -6,7 +6,7 @@
       :checked="isChecked"
       @click="$emit('click')"
     />
-    <span :class="$style.fake" />
+    <span :class="$style.fake" data-cy="fake__checkbox" />
   </label>
 </template>
 
@@ -37,6 +37,9 @@ label {
     border: 1.5px solid $backgroundGradient;
     border-radius: 5px;
     margin-right: 1.4rem;
+  }
+  .fake:hover {
+    background: $peach;
   }
 }
 .fake::before {
