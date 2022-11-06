@@ -53,7 +53,7 @@ export default {
   padding: 0.7rem 1.875rem;
   align-items: center;
   .todoLeft {
-    margin-right: 0;
+    margin-left: 0;
     cursor: pointer;
     @media (max-width: 450px) {
       margin-right: 0.5rem;

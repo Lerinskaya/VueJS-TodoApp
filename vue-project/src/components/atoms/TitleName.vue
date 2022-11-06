@@ -1,5 +1,7 @@
 <template>
-  <h1 :class="$style.title">to do list</h1>
+  <header>
+    <h1 :class="$style.title">to do list</h1>
+  </header>
 </template>
 
 <script>

@@ -12,21 +12,21 @@ export default {
     },
 
     filterTasks(state) {
-      if (state.filter == "All") {
-        return state.todos;
-      } else if (state.filter == "Active") {
-        return state.todos.filter((todo) => todo.isChecked === false);
-      } else if (state.filter == "Completed") {
-        return state.todos.filter((todo) => todo.isChecked === true);
+      if (state.filter == 'All') {
+        return state.todos
+      } else if (state.filter == 'Active') {
+        return state.todos.filter((todo) => todo.isChecked === false)
+      } else if (state.filter == 'Completed') {
+        return state.todos.filter((todo) => todo.isChecked === true)
       }
       return state.todos;
     },
   },
   mutations: {
-    addTodo(state, todoText) {
+    addTodo(state, value) {
       state.todos.push({
         id: v4(),
-        title: todoText,
+        title: value,
         isChecked: false,
       });
       localStorage.setItem("todos", JSON.stringify(state.todos));
@@ -35,6 +35,7 @@ export default {
       state.todos = state.todos.filter((todo) => todo.id != id);
       localStorage.setItem("todos", JSON.stringify(state.todos));
     },
+
     changeTaskStatus(state, id) {
       state.todos.map((todo) => {
         if (todo.id == id) {
@@ -50,5 +51,6 @@ export default {
       state.todos = JSON.parse(localStorage.getItem("todos")) || [];
     },
   },
-  actions: {},
-};
+  actions: {
+  },
+}

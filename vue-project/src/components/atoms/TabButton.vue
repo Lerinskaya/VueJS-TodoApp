@@ -2,6 +2,7 @@
   <button
     :class="[$style.tab, { [$style.active]: isActive }]"
     @click="$emit('click')"
+    data-cy="tab__title"
   >
     {{ title }}
   </button>
@@ -25,19 +26,22 @@ export default {
   background: #ffca93;
   font-weight: 600;
   font-size: 20px;
-  color: rgba(127, 75, 19, 0.42);
+  color: $lightBrown;
   border: none;
   cursor: pointer;
+  margin-right: 0;
   @media (max-width: 450px) {
     font-size: 0.8rem;
   }
 }
-
-button {
-  margin-right: 0;
+.tab:hover {
+  color: $brownHover;
+}
+.tab:active {
+  color: $orange;
 }
 .active {
-  border: 1px solid $brownBorder;
+  border: 2.3px solid $brownBorder;
   border-radius: 10px;
 }
 @media (max-width: 980px) {
