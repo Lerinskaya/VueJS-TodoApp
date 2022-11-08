@@ -18,6 +18,9 @@ import Footer from "@/components/organisms/Footer";
 
 export default {
   name: "App",
+  props: {
+    todos: [],
+  },
   components: {
     Title,
     TaskArea,
